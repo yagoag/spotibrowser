@@ -1,0 +1,12 @@
+.app-title {
+  color: #1DB954;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.filter-panel {
+  background-color: #121212;
+  width: 270px;
+  padding: 10px 30px;
+}

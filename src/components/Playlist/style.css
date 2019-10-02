@@ -1,0 +1,26 @@
+.playlist {
+  display: flex;
+  padding: 20px 50px;
+  text-decoration: none;
+  color: #B3B3B3;
+  font-size: 12px;
+}
+
+.playlist:hover {
+  background-color: rgba(255,255,255,.3);
+}
+
+.playlist .info {
+  margin: 7px 20px;
+}
+
+.playlist .info .name {
+  color: #F9F9F9;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.playlist .info .owner {
+  color: #B3B3B3;
+  font-weight: bold;
+}
