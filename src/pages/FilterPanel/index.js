@@ -33,7 +33,7 @@ const FilterPanel = ({filters, onChange}) => {
   
   return (
     <div className="filter-panel">
-      <div className="app-title">SpotiFood</div>
+      <div className="app-title">SpotiBrowser</div>
       {filterDefs.map(def => (
         <FilterElement key={def.id} definition={def} value={filters[def.id]} onChange={changeSingleFilter}></FilterElement>
       ))}
