@@ -1,0 +1,12 @@
+.pagination {
+  margin: 5px 10px;
+  text-align: end;
+}
+
+.pagination .arrow {
+  cursor: pointer;
+}
+
+.pagination .arrow.inactive {
+  opacity: 0.3;
+}

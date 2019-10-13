@@ -10,6 +10,7 @@
     "react": "^16.9.0",
     "react-datetime-picker": "^2.7.1",
     "react-dom": "^16.9.0",
+    "react-icons": "^3.7.0",
     "react-scripts": "3.1.1"
   },
   "scripts": {
