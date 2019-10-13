@@ -6,17 +6,21 @@
 .filter {
   border: none;
   border-radius: 12px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 1px 10px;
   width: 250px;
 }
 
-.filter>input[type=text], .filter>input[type=number], .filter>select, .react-datetime-picker__wrapper {
+.filter > input[type='text'],
+.filter > input[type='number'],
+.filter > select,
+.react-datetime-picker__wrapper {
   border: none;
   background-color: transparent;
   height: 22px;
   width: 250px;
   color: #373737;
+  outline: none;
 }
 
 select {

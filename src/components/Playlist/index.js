@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-const Playlist = ({playlist}) => {
+const Playlist = ({ playlist }) => {
   return (
     <a className="playlist" href={playlist.uri}>
       <img
@@ -12,8 +12,10 @@ const Playlist = ({playlist}) => {
       />
       <div className="info">
         <div className="name">{playlist.name}</div>
-        <div>Por <span className="owner">{playlist.owner.display_name}</span></div>
-        <div>{playlist.tracks.total} faixas</div>
+        <div>
+          By <span className="owner">{playlist.owner.display_name}</span>
+        </div>
+        <div>{playlist.tracks.total} tracks</div>
       </div>
     </a>
   );
