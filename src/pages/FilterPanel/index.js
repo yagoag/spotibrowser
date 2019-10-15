@@ -5,7 +5,7 @@ import './style.css';
 
 const { REACT_APP_FILTERS_API_URL } = process.env;
 
-const FilterPanel = ({ filters, onChange }) => {
+const FilterPanel = ({ visible, filters, onChange }) => {
   const [filterDefs, setFilterDefs] = useState([]);
 
   useEffect(() => {
@@ -30,8 +30,7 @@ const FilterPanel = ({ filters, onChange }) => {
   };
 
   return (
-    <div className="filter-panel">
-      <div className="app-title">SpotiBrowser</div>
+    <div className={'filter-panel' + (visible ? ' visible' : '')}>
       {filterDefs
         .filter(def => def.id !== 'offset' && def.id !== 'limit')
         .map(def => (

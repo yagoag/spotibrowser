@@ -1,7 +1,5 @@
 .playlist-container {
-  background: linear-gradient(180deg, #373737, #181818);
   flex: 1;
-  overflow-y: scroll;
 }
 
 .playlist-container .title {
@@ -12,8 +10,10 @@
 
 .loader-container {
   position: absolute;
-  width: calc(100% - 330px);
+  width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   background-color: rgba(55, 55, 55, 0.5);
 }
 
