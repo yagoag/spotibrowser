@@ -1,6 +1,6 @@
 .filter-name {
   font-size: 12px;
-  margin: 10px 5px 5px 10px;
+  margin: 0 5px 5px 10px;
 }
 
 .filter {
@@ -8,7 +8,8 @@
   border-radius: 12px;
   background-color: #ffffff;
   padding: 1px 10px;
-  width: 250px;
+  width: 200px;
+  margin-right: 10px;
 }
 
 .filter > input[type='text'],
@@ -18,7 +19,7 @@
   border: none;
   background-color: transparent;
   height: 22px;
-  width: 250px;
+  width: 200px;
   color: #373737;
   outline: none;
 }

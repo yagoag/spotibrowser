@@ -1,12 +1,13 @@
-.app-title {
-  color: #1DB954;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.filter-panel {
+  padding: 0 30px;
+  display: inline-flex;
+  height: 0px;
+  transition: height 0.3s;
+  visibility: hidden;
 }
 
-.filter-panel {
-  background-color: #121212;
-  width: 270px;
-  padding: 10px 30px;
+.filter-panel.visible {
+  height: 50px;
+  transition: height 0.3s;
+  visibility: visible;
 }

@@ -2,12 +2,46 @@
 
 .App {
   text-align: left;
-  color: #F9F9F9;
-  height: 100%;
-  width: 100%;
+  color: #f9f9f9;
+  min-height: calc(100% - 20px);
+  min-width: 100%;
   position: absolute;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(180deg, #373737, #181818);
+  padding-bottom: 20px;
+}
+
+#header {
+  padding: 15px 25px;
+  display: flex;
+}
+
+#header .app-title {
+  color: #1db954;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#header .show-filters {
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 30px;
+  padding: 0 15px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 50vh;
+  color: #fff;
+  font-size: 11px;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+#header .show-filters .arrow {
+  margin-top: 4px;
+  margin-left: 4px;
 }
