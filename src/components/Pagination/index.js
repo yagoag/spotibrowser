@@ -21,7 +21,7 @@ const Pagination = ({ offset, limit, total, setOffset, setLimit }) => {
         className={'arrow' + (offset < limit - 1 ? ' inactive' : '')}
       />
       Page
-      <div class="input">
+      <div className="input">
         <input
           type="text"
           className="page-number"
