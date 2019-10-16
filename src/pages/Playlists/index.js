@@ -56,6 +56,7 @@ const Playlists = ({ filters }) => {
         })
         .catch(e => {
           if (e.response.status === 401) {
+            localStorage.removeItem('access_token');
             sendToAuth();
           }
         })
