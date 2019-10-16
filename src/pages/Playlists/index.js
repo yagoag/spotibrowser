@@ -4,7 +4,16 @@ import Playlist from '../../components/Playlist';
 import Pagination from '../../components/Pagination';
 import './style.css';
 
-const { REACT_APP_SPOTIFY_API_URL, REACT_APP_AUTH_API_URL } = process.env;
+const {
+  REACT_APP_SPOTIFY_API_URL,
+  REACT_APP_AUTH_API_URL,
+  REACT_APP_CLIENT_ID,
+  REACT_APP_URL,
+} = process.env;
+
+const sendToAuth = () => {
+  window.location = `${REACT_APP_AUTH_API_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${REACT_APP_URL}`;
+};
 
 const Playlists = ({ filters }) => {
   const [playlistMessage, setPlaylistMessage] = useState('');
@@ -17,16 +26,42 @@ const Playlists = ({ filters }) => {
   useEffect(() => {
     const fetchPlaylistData = async () => {
       setIsLoading(true);
-      console.log('filters', filters);
-      const tokenResponse = await axios.get(REACT_APP_AUTH_API_URL);
-      const playlistResponse = await axios.get(REACT_APP_SPOTIFY_API_URL, {
-        params: { ...filters, offset: offset, limit: limit },
-        headers: { Authorization: 'Bearer ' + tokenResponse.data.access_token },
-      });
-      setPlaylistMessage(playlistResponse.data.message);
-      setPlaylists(playlistResponse.data.playlists.items);
-      setTotalPlaylists(playlistResponse.data.playlists.total);
-      setIsLoading(false);
+
+      if (!localStorage.getItem('access_token')) {
+        const hash = window.location.hash.substr(1);
+        const hashParams = hash.split('&').reduce((result, item) => {
+          var parts = item.split('=');
+          result[parts[0]] = parts[1];
+          return result;
+        }, {});
+
+        if (hashParams.access_token) {
+          localStorage.setItem('access_token', hashParams.access_token);
+        } else {
+          sendToAuth();
+        }
+      }
+
+      axios
+        .get(REACT_APP_SPOTIFY_API_URL, {
+          params: { ...filters, offset: offset, limit: limit },
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+          },
+        })
+        .then(res => {
+          setPlaylistMessage(res.data.message);
+          setPlaylists(res.data.playlists.items);
+          setTotalPlaylists(res.data.playlists.total);
+        })
+        .catch(e => {
+          if (e.response.status === 401) {
+            sendToAuth();
+          }
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     };
 
     fetchPlaylistData();
