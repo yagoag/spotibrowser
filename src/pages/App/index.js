@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
-import './App.css';
-import Playlists from './pages/Playlists';
-import FilterPanel from './pages/FilterPanel';
+import './style.css';
+import Playlists from '../Playlists';
+import FilterPanel from '../FilterPanel';
 
 const App = () => {
   const [filters, setFilters] = useState({});
