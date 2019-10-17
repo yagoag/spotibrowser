@@ -1,35 +1,5 @@
 [
   {
-    "id": "locale",
-    "name": "Locale",
-    "values": [
-      {
-        "value": "en_AU",
-        "name": "English (Australia)"
-      },
-      {
-        "value": "de_DE",
-        "name": "German"
-      },
-      {
-        "value": "pt_BR",
-        "name": "Brazilian Portuguese"
-      },
-      {
-        "value": "fr_FR",
-        "name": "French"
-      },
-      {
-        "value": "en_US",
-        "name": "English (US)"
-      },
-      {
-        "value": "es_AR",
-        "name": "Spanish (Argentina)"
-      }
-    ]
-  },
-  {
     "id": "country",
     "name": "Country",
     "values": [
