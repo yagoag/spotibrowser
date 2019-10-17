@@ -1,28 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import FilterElement from '../../components/FilterElement';
+import filterDefs from './filters.json';
 import './style.css';
 
-const { REACT_APP_FILTERS_API_URL } = process.env;
-
 const FilterPanel = ({ visible, filters, onChange }) => {
-  const [filterDefs, setFilterDefs] = useState([]);
-
-  useEffect(() => {
-    fetchFilterDefs();
-
-    const interval = setInterval(() => {
-      fetchFilterDefs();
-    }, 30000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const fetchFilterDefs = async () => {
-    const { data } = await axios.get(REACT_APP_FILTERS_API_URL);
-    setFilterDefs(data.filters);
-  };
-
   const changeSingleFilter = event => {
     const newState = { ...filters };
     newState[event.target.id] = event.target.value;

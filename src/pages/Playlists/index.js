@@ -44,7 +44,7 @@ const Playlists = ({ filters }) => {
 
       axios
         .get(REACT_APP_SPOTIFY_API_URL, {
-          params: { ...filters, offset: offset, limit: limit },
+          params: { ...filters, offset, limit },
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('access_token'),
           },

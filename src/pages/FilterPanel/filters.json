@@ -1,0 +1,75 @@
+[
+  {
+    "id": "locale",
+    "name": "Locale",
+    "values": [
+      {
+        "value": "en_AU",
+        "name": "English (Australia)"
+      },
+      {
+        "value": "de_DE",
+        "name": "German"
+      },
+      {
+        "value": "pt_BR",
+        "name": "Brazilian Portuguese"
+      },
+      {
+        "value": "fr_FR",
+        "name": "French"
+      },
+      {
+        "value": "en_US",
+        "name": "English (US)"
+      },
+      {
+        "value": "es_AR",
+        "name": "Spanish (Argentina)"
+      }
+    ]
+  },
+  {
+    "id": "country",
+    "name": "Country",
+    "values": [
+      {
+        "value": "AU",
+        "name": "Australia"
+      },
+      {
+        "value": "DE",
+        "name": "Germany"
+      },
+      {
+        "value": "BR",
+        "name": "Brazil"
+      },
+      {
+        "value": "PT",
+        "name": "Portugal"
+      },
+      {
+        "value": "AR",
+        "name": "Argentina"
+      },
+      {
+        "value": "FR",
+        "name": "France"
+      },
+      {
+        "value": "US",
+        "name": "United States"
+      }
+    ]
+  },
+  {
+    "id": "timestamp",
+    "name": "Date and Time",
+    "validation": {
+      "primitiveType": "STRING",
+      "entityType": "DATE_TIME",
+      "pattern": "yyyy-MM-ddTHH:mm:ss"
+    }
+  }
+]
