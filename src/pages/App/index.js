@@ -3,10 +3,12 @@ import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import './style.css';
 import Playlists from '../Playlists';
 import FilterPanel from '../FilterPanel';
+import Tracks from '../Tracks';
 
 const App = () => {
   const [filters, setFilters] = useState({});
   const [showFilters, setShowFilters] = useState(false);
+  const [activePlaylist, setActivePlaylist] = useState(null);
 
   return (
     <div className="App">
@@ -27,7 +29,14 @@ const App = () => {
         filters={filters}
         onChange={setFilters}
       />
-      <Playlists filters={filters} />
+      <div id="contents">
+        <Playlists
+          filters={filters}
+          activePlaylist={activePlaylist}
+          setActivePlaylist={setActivePlaylist}
+        />
+        {activePlaylist !== null && <Tracks playlist={activePlaylist} />}
+      </div>
     </div>
   );
 };

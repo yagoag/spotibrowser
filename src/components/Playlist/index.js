@@ -1,9 +1,9 @@
 import React from 'react';
 import './style.css';
 
-const Playlist = ({ playlist }) => {
+const Playlist = ({ playlist, onClick }) => {
   return (
-    <a className="playlist" href={playlist.uri}>
+    <div className="playlist" onClick={() => onClick(playlist)}>
       <img
         src={playlist.images[0].url}
         width={'64px'}
@@ -17,7 +17,7 @@ const Playlist = ({ playlist }) => {
         </div>
         <div>{playlist.tracks.total} tracks</div>
       </div>
-    </a>
+    </div>
   );
 };
 

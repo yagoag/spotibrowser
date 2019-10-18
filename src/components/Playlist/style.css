@@ -2,12 +2,13 @@
   display: flex;
   padding: 20px 50px;
   text-decoration: none;
-  color: #B3B3B3;
+  color: #b3b3b3;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .playlist:hover {
-  background-color: rgba(255,255,255,.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .playlist .info {
@@ -15,12 +16,12 @@
 }
 
 .playlist .info .name {
-  color: #F9F9F9;
+  color: #f9f9f9;
   font-size: 16px;
   font-weight: bold;
 }
 
 .playlist .info .owner {
-  color: #B3B3B3;
+  color: #b3b3b3;
   font-weight: bold;
 }

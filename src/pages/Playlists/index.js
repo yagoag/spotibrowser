@@ -15,7 +15,7 @@ const sendToAuth = () => {
   window.location = `${REACT_APP_AUTH_API_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${REACT_APP_URL}`;
 };
 
-const Playlists = ({ filters }) => {
+const Playlists = ({ filters, activePlaylist, setActivePlaylist }) => {
   const [playlistMessage, setPlaylistMessage] = useState('');
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -89,7 +89,7 @@ const Playlists = ({ filters }) => {
         setLimit={setLimit}
       />
       {playlists.map((playlist, index) => (
-        <Playlist key={index} playlist={playlist} />
+        <Playlist key={index} playlist={playlist} onClick={setActivePlaylist} />
       ))}
       <Pagination
         offset={offset}
