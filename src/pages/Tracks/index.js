@@ -12,6 +12,12 @@ const sendToAuth = () => {
   window.location = `${REACT_APP_AUTH_API_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${REACT_APP_URL}`;
 };
 
+const filterAndPrint = track => {
+  const shouldAdd = track.track && track.track.id;
+  if (!shouldAdd) console.log('Not adding', track);
+  return shouldAdd;
+};
+
 export default ({ playlist }) => {
   const [tracks, setTracks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,7 +82,7 @@ export default ({ playlist }) => {
         <h2>{playlist.name}</h2>
       </div>
       <div className="track-list">
-        {tracks.map(track => (
+        {tracks.filter(filterAndPrint).map(track => (
           <div className="track" key={track.track.id}>
             {track.track.name}
             {/* {track.track.artists.reduce((names, artist) => names + artist.name)} */}

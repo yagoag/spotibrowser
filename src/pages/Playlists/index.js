@@ -88,8 +88,13 @@ const Playlists = ({ filters, activePlaylist, setActivePlaylist }) => {
         setOffset={setOffset}
         setLimit={setLimit}
       />
-      {playlists.map((playlist, index) => (
-        <Playlist key={index} playlist={playlist} onClick={setActivePlaylist} />
+      {playlists.map(playlist => (
+        <Playlist
+          key={playlist.id}
+          playlist={playlist}
+          onClick={setActivePlaylist}
+          active={activePlaylist && playlist.id === activePlaylist.id}
+        />
       ))}
       <Pagination
         offset={offset}

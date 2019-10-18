@@ -1,9 +1,12 @@
 import React from 'react';
 import './style.css';
 
-const Playlist = ({ playlist, onClick }) => {
+const Playlist = ({ playlist, onClick, active }) => {
   return (
-    <div className="playlist" onClick={() => onClick(playlist)}>
+    <div
+      className={'playlist' + (active ? ' active' : '')}
+      onClick={() => onClick(playlist)}
+    >
       <img
         src={playlist.images[0].url}
         width={'64px'}
