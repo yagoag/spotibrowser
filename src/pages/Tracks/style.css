@@ -3,6 +3,15 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+.track-container .close-button {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.track-container .close-button:hover {
+  opacity: 0.5;
+}
+
 .playlist-info {
   display: flex;
   flex-direction: row;
@@ -10,6 +19,7 @@
 
 .playlist-info .playlist-details {
   margin: 24px 0 0 16px;
+  flex: 1;
 }
 
 .playlist-info .playlist-details .list-type {

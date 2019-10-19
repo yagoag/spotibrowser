@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { IoMdClose } from 'react-icons/io';
 import './style.css';
 
 const MAX_TITLE_LENGTH = 35;
@@ -10,7 +11,7 @@ const filterAndPrint = track => {
   return shouldAdd;
 };
 
-export default ({ playlist, setUnauthorized, accessToken }) => {
+export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
   const [tracks, setTracks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -68,6 +69,7 @@ export default ({ playlist, setUnauthorized, accessToken }) => {
             · {playlist.tracks.total} songs
           </div>
         </div>
+        <IoMdClose className="close-button" onClick={() => setPlaylist(null)} />
       </div>
       <div className="track-list">
         {tracks.filter(filterAndPrint).map(t => (

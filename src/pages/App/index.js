@@ -78,6 +78,7 @@ const App = () => {
         {activePlaylist !== null && (
           <Tracks
             playlist={activePlaylist}
+            setPlaylist={setActivePlaylist}
             setUnauthorized={setUnauthorized}
             accessToken={accessToken}
           />
