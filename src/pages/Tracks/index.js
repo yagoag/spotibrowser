@@ -8,7 +8,7 @@ const filterAndPrint = track => {
   return shouldAdd;
 };
 
-export default ({ playlist, setUnauthorized }) => {
+export default ({ playlist, setUnauthorized, accessToken }) => {
   const [tracks, setTracks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,11 +16,11 @@ export default ({ playlist, setUnauthorized }) => {
     const fetchPlaylistData = async () => {
       setIsLoading(true);
 
-      if (localStorage.getItem('access_token')) {
+      if (accessToken) {
         axios
           .get(playlist.tracks.href, {
             headers: {
-              Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+              Authorization: `Bearer ${accessToken}`,
             },
           })
           .then(res => {
@@ -44,7 +44,7 @@ export default ({ playlist, setUnauthorized }) => {
     }, 30000);
 
     return () => clearInterval(interval);
-  }, [playlist, setUnauthorized]);
+  }, [playlist, setUnauthorized, accessToken]);
 
   return (
     <div className="track-container">

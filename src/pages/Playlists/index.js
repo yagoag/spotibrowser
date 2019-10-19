@@ -11,6 +11,7 @@ const Playlists = ({
   activePlaylist,
   setActivePlaylist,
   setUnauthorized,
+  accessToken,
 }) => {
   const [playlistMessage, setPlaylistMessage] = useState('');
   const [playlists, setPlaylists] = useState([]);
@@ -23,12 +24,12 @@ const Playlists = ({
     const fetchPlaylistData = async () => {
       setIsLoading(true);
 
-      if (localStorage.getItem('access_token')) {
+      if (accessToken) {
         axios
           .get(REACT_APP_SPOTIFY_API_URL, {
             params: { ...filters, offset, limit },
             headers: {
-              Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+              Authorization: `Bearer ${accessToken}`,
             },
           })
           .then(res => {
@@ -51,7 +52,7 @@ const Playlists = ({
     }, 30000);
 
     return () => clearInterval(interval);
-  }, [filters, limit, offset, setUnauthorized]);
+  }, [filters, limit, offset, setUnauthorized, accessToken]);
 
   return (
     <div className="playlist-container">

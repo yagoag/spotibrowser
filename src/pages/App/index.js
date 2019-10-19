@@ -20,6 +20,7 @@ const App = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [activePlaylist, setActivePlaylist] = useState(null);
   const [unauthorized, setUnauthorized] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
 
   useEffect(() => {
     if (!localStorage.getItem('access_token')) {
@@ -35,6 +36,8 @@ const App = () => {
       } else {
         sendToAuth();
       }
+    } else {
+      setAccessToken(localStorage.getItem('access_token'));
     }
   }, []);
 
@@ -70,9 +73,14 @@ const App = () => {
           activePlaylist={activePlaylist}
           setActivePlaylist={setActivePlaylist}
           setUnauthorized={setUnauthorized}
+          accessToken={accessToken}
         />
         {activePlaylist !== null && (
-          <Tracks playlist={activePlaylist} setUnauthorized={setUnauthorized} />
+          <Tracks
+            playlist={activePlaylist}
+            setUnauthorized={setUnauthorized}
+            accessToken={accessToken}
+          />
         )}
       </div>
     </div>
