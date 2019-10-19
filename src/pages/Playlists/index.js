@@ -4,18 +4,14 @@ import Playlist from '../../components/Playlist';
 import Pagination from '../../components/Pagination';
 import './style.css';
 
-const {
-  REACT_APP_SPOTIFY_API_URL,
-  REACT_APP_AUTH_API_URL,
-  REACT_APP_CLIENT_ID,
-  REACT_APP_URL,
-} = process.env;
+const { REACT_APP_SPOTIFY_API_URL } = process.env;
 
-const sendToAuth = () => {
-  window.location = `${REACT_APP_AUTH_API_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${REACT_APP_URL}`;
-};
-
-const Playlists = ({ filters, activePlaylist, setActivePlaylist }) => {
+const Playlists = ({
+  filters,
+  activePlaylist,
+  setActivePlaylist,
+  setUnauthorized,
+}) => {
   const [playlistMessage, setPlaylistMessage] = useState('');
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,42 +23,26 @@ const Playlists = ({ filters, activePlaylist, setActivePlaylist }) => {
     const fetchPlaylistData = async () => {
       setIsLoading(true);
 
-      if (!localStorage.getItem('access_token')) {
-        const hash = window.location.hash.substr(1);
-        const hashParams = hash.split('&').reduce((result, item) => {
-          var parts = item.split('=');
-          result[parts[0]] = parts[1];
-          return result;
-        }, {});
-
-        if (hashParams.access_token) {
-          localStorage.setItem('access_token', hashParams.access_token);
-        } else {
-          sendToAuth();
-        }
+      if (localStorage.getItem('access_token')) {
+        axios
+          .get(REACT_APP_SPOTIFY_API_URL, {
+            params: { ...filters, offset, limit },
+            headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+            },
+          })
+          .then(res => {
+            setPlaylistMessage(res.data.message);
+            setPlaylists(res.data.playlists.items);
+            setTotalPlaylists(res.data.playlists.total);
+          })
+          .catch(e => {
+            setUnauthorized(true);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
       }
-
-      axios
-        .get(REACT_APP_SPOTIFY_API_URL, {
-          params: { ...filters, offset, limit },
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-          },
-        })
-        .then(res => {
-          setPlaylistMessage(res.data.message);
-          setPlaylists(res.data.playlists.items);
-          setTotalPlaylists(res.data.playlists.total);
-        })
-        .catch(e => {
-          if (e.response.status === 401) {
-            localStorage.removeItem('access_token');
-            sendToAuth();
-          }
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
     };
 
     fetchPlaylistData();
@@ -71,7 +51,7 @@ const Playlists = ({ filters, activePlaylist, setActivePlaylist }) => {
     }, 30000);
 
     return () => clearInterval(interval);
-  }, [filters, limit, offset]);
+  }, [filters, limit, offset, setUnauthorized]);
 
   return (
     <div className="playlist-container">

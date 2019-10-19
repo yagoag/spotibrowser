@@ -1,14 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import './style.css';
 import Playlists from '../Playlists';
 import FilterPanel from '../FilterPanel';
 import Tracks from '../Tracks';
 
+const {
+  REACT_APP_AUTH_API_URL,
+  REACT_APP_CLIENT_ID,
+  REACT_APP_URL,
+} = process.env;
+
+const sendToAuth = () => {
+  window.location = `${REACT_APP_AUTH_API_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${REACT_APP_URL}`;
+};
+
 const App = () => {
   const [filters, setFilters] = useState({});
   const [showFilters, setShowFilters] = useState(false);
   const [activePlaylist, setActivePlaylist] = useState(null);
+  const [unauthorized, setUnauthorized] = useState(false);
+
+  useEffect(() => {
+    if (!localStorage.getItem('access_token')) {
+      const hash = window.location.hash.substr(1);
+      const hashParams = hash.split('&').reduce((result, item) => {
+        var parts = item.split('=');
+        result[parts[0]] = parts[1];
+        return result;
+      }, {});
+
+      if (hashParams.access_token) {
+        localStorage.setItem('access_token', hashParams.access_token);
+      } else {
+        sendToAuth();
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (unauthorized) {
+      localStorage.removeItem('access_token');
+      sendToAuth();
+    }
+  }, [unauthorized]);
 
   return (
     <div className="App">
@@ -34,8 +69,11 @@ const App = () => {
           filters={filters}
           activePlaylist={activePlaylist}
           setActivePlaylist={setActivePlaylist}
+          setUnauthorized={setUnauthorized}
         />
-        {activePlaylist !== null && <Tracks playlist={activePlaylist} />}
+        {activePlaylist !== null && (
+          <Tracks playlist={activePlaylist} setUnauthorized={setUnauthorized} />
+        )}
       </div>
     </div>
   );
