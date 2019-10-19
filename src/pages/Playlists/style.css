@@ -1,5 +1,6 @@
 .playlist-container {
   flex: 1;
+  min-width: 350px;
 }
 
 .playlist-container .title {

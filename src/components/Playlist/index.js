@@ -18,7 +18,7 @@ const Playlist = ({ playlist, onClick, active }) => {
         <div>
           By <span className="owner">{playlist.owner.display_name}</span>
         </div>
-        <div>{playlist.tracks.total} tracks</div>
+        <div>{playlist.tracks.total} songs</div>
       </div>
     </div>
   );

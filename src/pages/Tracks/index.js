@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './style.css';
 
+const MAX_TITLE_LENGTH = 35;
+
 const filterAndPrint = track => {
   const shouldAdd = track.track && track.track.id;
   if (!shouldAdd) console.log('Not adding', track);
@@ -51,17 +53,35 @@ export default ({ playlist, setUnauthorized, accessToken }) => {
       <div className="playlist-info">
         <img
           src={playlist.images[0].url}
-          width={'196px'}
-          height={'196px'}
+          width={'152px'}
+          height={'152px'}
           alt={playlist.name}
         />
-        <h2>{playlist.name}</h2>
+        <div className="playlist-details">
+          <div className="list-type">Playlist</div>
+          <div className="playlist-name">{playlist.name}</div>
+          <div className="track-count">
+            Created by{' '}
+            <span className="playlist-owner">
+              {playlist.owner.display_name}
+            </span>{' '}
+            · {playlist.tracks.total} songs
+          </div>
+        </div>
       </div>
       <div className="track-list">
-        {tracks.filter(filterAndPrint).map(track => (
-          <div className="track" key={track.track.id}>
-            {track.track.name}
-            {/* {track.track.artists.reduce((names, artist) => names + artist.name)} */}
+        {tracks.filter(filterAndPrint).map(t => (
+          <div className="track" key={t.track.id}>
+            <span title={t.track.name}>{`${t.track.name.substring(
+              0,
+              MAX_TITLE_LENGTH,
+            )}${t.track.name.length > MAX_TITLE_LENGTH ? '...' : ''}`}</span>
+            {` · `}
+            {t.track.artists.map((artist, index) => (
+              <span className="artist">{`${artist.name}${
+                index < t.track.artists.length - 1 ? ', ' : ''
+              }`}</span>
+            ))}
           </div>
         ))}
       </div>
