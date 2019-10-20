@@ -55,7 +55,11 @@ const Playlists = ({
   }, [filters, limit, offset, setUnauthorized, accessToken]);
 
   return (
-    <div className="playlist-container">
+    <div
+      className={`playlist-container${
+        activePlaylist ? ' active-playlist' : ''
+      }`}
+    >
       {isLoading && (
         <div className="loader-container">
           <div className="loader"></div>
@@ -68,13 +72,14 @@ const Playlists = ({
         total={totalPlaylists}
         setOffset={setOffset}
         setLimit={setLimit}
+        small={!!activePlaylist}
       />
       {playlists.map(playlist => (
         <Playlist
           key={playlist.id}
           playlist={playlist}
           onClick={setActivePlaylist}
-          active={activePlaylist && playlist.id === activePlaylist.id}
+          active={activePlaylist}
         />
       ))}
       <Pagination
@@ -83,6 +88,7 @@ const Playlists = ({
         total={totalPlaylists}
         setOffset={setOffset}
         setLimit={setLimit}
+        small={!!activePlaylist}
       />
     </div>
   );

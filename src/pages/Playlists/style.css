@@ -1,6 +1,29 @@
-.playlist-container {
-  flex: 1;
-  min-width: 350px;
+@media screen and (max-width: 480px) {
+  .playlist-container.active-playlist {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .playlist-container.active-playlist .title {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .playlist-container {
+    flex: 1;
+  }
+
+  .playlist-container.active-playlist {
+    flex: unset;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .playlist-container {
+    flex: 1;
+  }
 }
 
 .playlist-container .title {

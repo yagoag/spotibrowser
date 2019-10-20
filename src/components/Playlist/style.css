@@ -7,6 +7,16 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .playlist.playlist-small .info {
+    display: none;
+  }
+
+  .playlist.playlist-small {
+    padding: 20px;
+  }
+}
+
 .playlist:hover,
 .playlist.active:hover {
   background-color: rgba(255, 255, 255, 0.3);
@@ -17,7 +27,7 @@
 }
 
 .playlist .info {
-  margin: 7px 20px;
+  margin: 7px 0 7px 20px;
 }
 
 .playlist .info .name {

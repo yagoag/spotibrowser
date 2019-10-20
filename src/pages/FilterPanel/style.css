@@ -1,13 +1,31 @@
+@media screen and (max-width: 480px) {
+  .filter-panel.active {
+    display: inline-table;
+  }
+
+  .filter-panel.visible {
+    height: 128px;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .filter-panel {
+    display: inline-flex;
+  }
+
+  .filter-panel.visible {
+    height: 64px;
+  }
+}
+
 .filter-panel {
-  padding: 0 30px;
-  display: inline-flex;
+  padding: 0 32px;
   height: 0px;
   transition: height 0.3s;
   visibility: hidden;
 }
 
 .filter-panel.visible {
-  height: 50px;
   transition: height 0.3s;
   visibility: visible;
 }

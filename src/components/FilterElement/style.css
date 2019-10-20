@@ -1,9 +1,13 @@
+.filter {
+  margin-bottom: 16px;
+}
+
 .filter-name {
   font-size: 12px;
   margin: 0 5px 5px 10px;
 }
 
-.filter {
+.filter-input {
   border: none;
   border-radius: 12px;
   background-color: #ffffff;

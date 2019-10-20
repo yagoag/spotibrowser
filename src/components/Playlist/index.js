@@ -4,7 +4,9 @@ import './style.css';
 const Playlist = ({ playlist, onClick, active }) => {
   return (
     <div
-      className={'playlist' + (active ? ' active' : '')}
+      className={`playlist ${active ? ' playlist-small' : ''}${
+        active && playlist.id === active.id ? ' active' : ''
+      }`}
       onClick={() => onClick(playlist)}
     >
       <img

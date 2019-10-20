@@ -1,5 +1,30 @@
+@media screen and (max-width: 768px) {
+  .pagination .page-limit {
+    display: none;
+  }
+
+  .pagination.small {
+    justify-content: center;
+  }
+
+  .pagination.small .arrow {
+    font-size: 20px;
+  }
+
+  .pagination.small .page-info {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .pagination .page-limit {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 .pagination {
-  margin: 5px 10px;
+  margin: 8px 16px;
   text-align: end;
   display: flex;
   justify-content: flex-end;
@@ -32,4 +57,13 @@
   background-color: white;
   border-radius: 50vh;
   margin: 0 5px;
+}
+
+.pagination .page-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.pagination.small .page-limit {
+  display: none;
 }

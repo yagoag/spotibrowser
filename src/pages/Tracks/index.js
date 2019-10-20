@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IoMdClose } from 'react-icons/io';
+import Pagination from '../../components/Pagination';
 import './style.css';
 
 const MAX_TITLE_LENGTH = 35;
@@ -13,7 +14,10 @@ const filterAndPrint = track => {
 
 export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
   const [tracks, setTracks] = useState([]);
+  const [totalTracks, setTotalTracks] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [limit, setLimit] = useState(10);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     const fetchPlaylistData = async () => {
@@ -22,13 +26,14 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
       if (accessToken) {
         axios
           .get(playlist.tracks.href, {
+            params: { offset, limit },
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
           })
           .then(res => {
-            console.log(res.data);
             setTracks(res.data.items);
+            setTotalTracks(res.data.total);
           })
           .catch(e => {
             if (e.response.status === 401) {
@@ -47,7 +52,7 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
     }, 30000);
 
     return () => clearInterval(interval);
-  }, [playlist, setUnauthorized, accessToken]);
+  }, [playlist, setUnauthorized, accessToken, limit, offset]);
 
   return (
     <div className="track-container">
@@ -87,6 +92,13 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
           </div>
         ))}
       </div>
+      <Pagination
+        offset={offset}
+        limit={limit}
+        total={totalTracks}
+        setOffset={setOffset}
+        setLimit={setLimit}
+      />
     </div>
   );
 };
