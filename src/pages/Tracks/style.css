@@ -71,3 +71,7 @@
 .track .artist {
   color: #b3b3b3;
 }
+
+.track-container.loading {
+  opacity: 0.5;
+}

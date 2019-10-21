@@ -56,9 +56,8 @@ const Playlists = ({
 
   return (
     <div
-      className={`playlist-container${
-        activePlaylist ? ' active-playlist' : ''
-      }`}
+      className={`playlist-container${activePlaylist ? ' active-playlist' : ''}
+      ${isLoading ? ' loading' : ''}`}
     >
       {isLoading && (
         <div className="loader-container">

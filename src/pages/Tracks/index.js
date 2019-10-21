@@ -55,7 +55,12 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
   }, [playlist, setUnauthorized, accessToken, limit, offset]);
 
   return (
-    <div className="track-container">
+    <div className={`track-container${isLoading ? ' loading' : ''}`}>
+      {isLoading && (
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
+      )}
       <div className="playlist-info">
         <img
           src={playlist.images[0].url}
@@ -85,7 +90,7 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
             )}${t.track.name.length > MAX_TITLE_LENGTH ? '...' : ''}`}</span>
             {` · `}
             {t.track.artists.map((artist, index) => (
-              <span className="artist">{`${artist.name}${
+              <span key={artist.id} className="artist">{`${artist.name}${
                 index < t.track.artists.length - 1 ? ', ' : ''
               }`}</span>
             ))}
