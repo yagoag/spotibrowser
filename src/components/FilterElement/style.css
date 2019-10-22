@@ -14,11 +14,12 @@ select {
 
 .filter-input {
   border: none;
-  border-radius: 12px;
+  border-radius: 50vh;
   background-color: #ffffff;
   padding: 1px 10px;
   width: 200px;
   margin-right: 10px;
+  border: 1px solid transparent;
 }
 
 .filter-input > input[type='text'],
