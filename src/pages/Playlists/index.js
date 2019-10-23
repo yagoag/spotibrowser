@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 import Playlist from '../../components/Playlist';
 import Pagination from '../../components/Pagination';
+import { setActivePlaylistRdx } from '../../store/actions';
 import './style.css';
 
 const { REACT_APP_SPOTIFY_API_URL } = process.env;
@@ -19,6 +21,11 @@ const Playlists = ({
   const [limit, setLimit] = useState(5);
   const [offset, setOffset] = useState(0);
   const [totalPlaylists, setTotalPlaylists] = useState(0);
+
+  const activePlaylistRdx = useSelector(state => state.activePlaylist);
+  const dispatch = useDispatch();
+
+  console.log({ activePlaylistRdx });
 
   useEffect(() => {
     const fetchPlaylistData = async () => {
@@ -77,7 +84,10 @@ const Playlists = ({
         <Playlist
           key={playlist.id}
           playlist={playlist}
-          onClick={setActivePlaylist}
+          onClick={playlist => {
+            setActivePlaylist(playlist);
+            dispatch(setActivePlaylistRdx(playlist));
+          }}
           active={activePlaylist}
         />
       ))}

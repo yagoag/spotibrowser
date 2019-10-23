@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Provider } from 'react-redux';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import './style.css';
 import Playlists from '../Playlists';
 import FilterPanel from '../FilterPanel';
 import Tracks from '../Tracks';
+import store from '../../store';
 
 const {
   REACT_APP_AUTH_API_URL,
@@ -50,40 +52,42 @@ const App = () => {
 
   return (
     <div className="App">
-      <div id="header">
-        <div className="app-title">SpotiBrowser</div>
-        <button
-          className="show-filters"
-          onClick={() => setShowFilters(!showFilters)}
-        >
-          Filters
-          <span className="arrow">
-            {showFilters ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
-          </span>
-        </button>
-      </div>
-      <FilterPanel
-        visible={showFilters}
-        filters={filters}
-        onChange={setFilters}
-      />
-      <div id="contents">
-        <Playlists
+      <Provider store={store}>
+        <div id="header">
+          <div className="app-title">SpotiBrowser</div>
+          <button
+            className="show-filters"
+            onClick={() => setShowFilters(!showFilters)}
+          >
+            Filters
+            <span className="arrow">
+              {showFilters ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
+            </span>
+          </button>
+        </div>
+        <FilterPanel
+          visible={showFilters}
           filters={filters}
-          activePlaylist={activePlaylist}
-          setActivePlaylist={setActivePlaylist}
-          setUnauthorized={setUnauthorized}
-          accessToken={accessToken}
+          onChange={setFilters}
         />
-        {activePlaylist !== null && (
-          <Tracks
-            playlist={activePlaylist}
-            setPlaylist={setActivePlaylist}
+        <div id="contents">
+          <Playlists
+            filters={filters}
+            activePlaylist={activePlaylist}
+            setActivePlaylist={setActivePlaylist}
             setUnauthorized={setUnauthorized}
             accessToken={accessToken}
           />
-        )}
-      </div>
+          {activePlaylist !== null && (
+            <Tracks
+              playlist={activePlaylist}
+              setPlaylist={setActivePlaylist}
+              setUnauthorized={setUnauthorized}
+              accessToken={accessToken}
+            />
+          )}
+        </div>
+      </Provider>
     </div>
   );
 };
