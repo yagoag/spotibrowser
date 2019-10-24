@@ -33,6 +33,7 @@ const App = () => {
 
       if (hashParams.access_token) {
         localStorage.setItem('access_token', hashParams.access_token);
+        setAccessToken(hashParams.access_token);
       } else {
         sendToAuth();
       }
