@@ -1,31 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Playlist from '../../components/Playlist';
 import Pagination from '../../components/Pagination';
-import { setActivePlaylistRdx } from '../../store/actions';
 import './style.css';
 
 const { REACT_APP_SPOTIFY_API_URL } = process.env;
 
-const Playlists = ({
-  filters,
-  activePlaylist,
-  setActivePlaylist,
-  setUnauthorized,
-  accessToken,
-}) => {
+const Playlists = ({ setUnauthorized, accessToken }) => {
   const [playlistMessage, setPlaylistMessage] = useState('');
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [limit, setLimit] = useState(5);
   const [offset, setOffset] = useState(0);
   const [totalPlaylists, setTotalPlaylists] = useState(0);
-
-  const activePlaylistRdx = useSelector(state => state.activePlaylist);
-  const dispatch = useDispatch();
-
-  console.log({ activePlaylistRdx });
+  const activePlaylist = useSelector(state => state.activePlaylist);
+  const filters = useSelector(state => state.filters);
 
   useEffect(() => {
     const fetchPlaylistData = async () => {
@@ -84,10 +74,6 @@ const Playlists = ({
         <Playlist
           key={playlist.id}
           playlist={playlist}
-          onClick={playlist => {
-            setActivePlaylist(playlist);
-            dispatch(setActivePlaylistRdx(playlist));
-          }}
           active={activePlaylist}
         />
       ))}

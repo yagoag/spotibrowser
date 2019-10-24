@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IoMdClose } from 'react-icons/io';
+import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../components/Pagination';
+import { setActivePlaylist } from '../../store/actions';
 import './style.css';
 
 const MAX_TITLE_LENGTH = 35;
@@ -12,18 +14,21 @@ const filterAndPrint = track => {
   return shouldAdd;
 };
 
-export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
+const Tracks = ({ setUnauthorized, accessToken }) => {
   const [tracks, setTracks] = useState([]);
   const [totalTracks, setTotalTracks] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
+  const playlist = useSelector(state => state.activePlaylist);
+  const dispatch = useDispatch();
+  console.log({ playlist });
 
   useEffect(() => {
     const fetchPlaylistData = async () => {
       setIsLoading(true);
 
-      if (accessToken) {
+      if (playlist && accessToken) {
         axios
           .get(playlist.tracks.href, {
             params: { offset, limit },
@@ -54,6 +59,10 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
     return () => clearInterval(interval);
   }, [playlist, setUnauthorized, accessToken, limit, offset]);
 
+  if (!playlist) {
+    return <></>;
+  }
+
   return (
     <div className={`track-container${isLoading ? ' loading' : ''}`}>
       {isLoading && (
@@ -79,7 +88,10 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
             · {playlist.tracks.total} songs
           </div>
         </div>
-        <IoMdClose className="close-button" onClick={() => setPlaylist(null)} />
+        <IoMdClose
+          className="close-button"
+          onClick={() => dispatch(setActivePlaylist(null))}
+        />
       </div>
       <div className="track-list">
         {tracks.filter(filterAndPrint).map(t => (
@@ -107,3 +119,5 @@ export default ({ playlist, setPlaylist, setUnauthorized, accessToken }) => {
     </div>
   );
 };
+
+export default Tracks;

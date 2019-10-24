@@ -18,9 +18,7 @@ const sendToAuth = () => {
 };
 
 const App = () => {
-  const [filters, setFilters] = useState({});
   const [showFilters, setShowFilters] = useState(false);
-  const [activePlaylist, setActivePlaylist] = useState(null);
   const [unauthorized, setUnauthorized] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
 
@@ -51,8 +49,8 @@ const App = () => {
   }, [unauthorized]);
 
   return (
-    <div className="App">
-      <Provider store={store}>
+    <Provider store={store}>
+      <div className="App">
         <div id="header">
           <div className="app-title">SpotiBrowser</div>
           <button
@@ -65,30 +63,16 @@ const App = () => {
             </span>
           </button>
         </div>
-        <FilterPanel
-          visible={showFilters}
-          filters={filters}
-          onChange={setFilters}
-        />
+        <FilterPanel visible={showFilters} />
         <div id="contents">
           <Playlists
-            filters={filters}
-            activePlaylist={activePlaylist}
-            setActivePlaylist={setActivePlaylist}
             setUnauthorized={setUnauthorized}
             accessToken={accessToken}
           />
-          {activePlaylist !== null && (
-            <Tracks
-              playlist={activePlaylist}
-              setPlaylist={setActivePlaylist}
-              setUnauthorized={setUnauthorized}
-              accessToken={accessToken}
-            />
-          )}
+          <Tracks setUnauthorized={setUnauthorized} accessToken={accessToken} />
         </div>
-      </Provider>
-    </div>
+      </div>
+    </Provider>
   );
 };
 

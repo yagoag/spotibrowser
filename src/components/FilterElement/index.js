@@ -17,7 +17,7 @@ const FilterElement = ({ definition, value, onChange }) => {
     <div key={definition.id} className="filter">
       <div className="filter-name">
         {definition.name}
-        <span class="error-message"> {error}</span>
+        <span className="error-message"> {error}</span>
       </div>
       <div className={`filter-input${error ? ' error' : ''}`}>
         {'values' in definition ? (

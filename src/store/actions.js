@@ -1,8 +1,15 @@
-function setActivePlaylistRdx(playlist) {
+function setActivePlaylist(playlist) {
   return {
     type: 'SET_ACTIVE_PLAYLIST',
     playlist,
   };
 }
 
-export { setActivePlaylistRdx };
+function setFilters(filters) {
+  return {
+    type: 'SET_FILTERS',
+    filters,
+  };
+}
+
+export { setActivePlaylist, setFilters };

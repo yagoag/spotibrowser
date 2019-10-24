@@ -1,13 +1,17 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FilterElement from '../../components/FilterElement';
+import { setFilters } from '../../store/actions';
 import filterDefs from './filters.json';
 import './style.css';
 
-const FilterPanel = ({ visible, filters, onChange }) => {
+const FilterPanel = ({ visible, onChange }) => {
+  const filters = useSelector(state => state.filters);
+  const dispatch = useDispatch();
   const changeSingleFilter = event => {
     const newState = { ...filters };
     newState[event.target.id] = event.target.value;
-    onChange(newState);
+    dispatch(setFilters(newState));
   };
 
   return (

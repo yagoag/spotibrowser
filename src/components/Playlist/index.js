@@ -1,13 +1,18 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActivePlaylist } from '../../store/actions';
 import './style.css';
 
-const Playlist = ({ playlist, onClick, active }) => {
+const Playlist = ({ playlist }) => {
+  const dispatch = useDispatch();
+  const activePlaylist = useSelector(state => state.activePlaylist);
+
   return (
     <div
-      className={`playlist ${active ? ' playlist-small' : ''}${
-        active && playlist.id === active.id ? ' active' : ''
+      className={`playlist${activePlaylist ? ' playlist-small' : ''}${
+        activePlaylist && playlist.id === activePlaylist.id ? ' active' : ''
       }`}
-      onClick={() => onClick(playlist)}
+      onClick={() => dispatch(setActivePlaylist(playlist))}
     >
       <img
         src={playlist.images[0].url}
