@@ -11,13 +11,10 @@ const {
   REACT_APP_AUTH_API_URL,
   REACT_APP_CLIENT_ID,
   REACT_APP_URL,
-  PUBLIC_URL,
 } = process.env;
 
 const sendToAuth = () => {
-  window.location = `${REACT_APP_AUTH_API_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${
-    PUBLIC_URL !== '' ? PUBLIC_URL : REACT_APP_URL
-  }`;
+  window.location = `${REACT_APP_AUTH_API_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${REACT_APP_URL}`;
 };
 
 const App = () => {
