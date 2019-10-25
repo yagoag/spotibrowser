@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/spotibrowser/precache-manifest.63b228de6bff7d04ab956f5610cc0384.js"
+  "/spotibrowser/precache-manifest.852b3b5296331cd0d30ebd4dce5e9262.js"
 );
 
 self.addEventListener('message', (event) => {
