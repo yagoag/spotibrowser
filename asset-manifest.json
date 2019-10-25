@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/spotibrowser/static/css/main.18d382c2.chunk.css",
+    "main.js": "/spotibrowser/static/js/main.f9e7a006.chunk.js",
+    "main.js.map": "/spotibrowser/static/js/main.f9e7a006.chunk.js.map",
+    "runtime~main.js": "/spotibrowser/static/js/runtime~main.ab9fad04.js",
+    "runtime~main.js.map": "/spotibrowser/static/js/runtime~main.ab9fad04.js.map",
+    "static/css/2.ef8e8b31.chunk.css": "/spotibrowser/static/css/2.ef8e8b31.chunk.css",
+    "static/js/2.7ecf87f0.chunk.js": "/spotibrowser/static/js/2.7ecf87f0.chunk.js",
+    "static/js/2.7ecf87f0.chunk.js.map": "/spotibrowser/static/js/2.7ecf87f0.chunk.js.map",
+    "index.html": "/spotibrowser/index.html",
+    "precache-manifest.63b228de6bff7d04ab956f5610cc0384.js": "/spotibrowser/precache-manifest.63b228de6bff7d04ab956f5610cc0384.js",
+    "service-worker.js": "/spotibrowser/service-worker.js",
+    "static/css/2.ef8e8b31.chunk.css.map": "/spotibrowser/static/css/2.ef8e8b31.chunk.css.map",
+    "static/css/main.18d382c2.chunk.css.map": "/spotibrowser/static/css/main.18d382c2.chunk.css.map"
+  }
+}
