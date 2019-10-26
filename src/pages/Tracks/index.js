@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IoMdClose } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
+import Tooltip from 'rc-tooltip';
 import Pagination from '../../components/Pagination';
 import { setActivePlaylist } from '../../store/actions';
 import './style.css';
+import ArtistTooltip from '../../components/ArtistTooltip';
 
 const MAX_TITLE_LENGTH = 35;
 
@@ -22,7 +24,6 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
   const [offset, setOffset] = useState(0);
   const playlist = useSelector(state => state.activePlaylist);
   const dispatch = useDispatch();
-  console.log({ playlist });
 
   useEffect(() => {
     const fetchPlaylistData = async () => {
@@ -101,11 +102,29 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
               MAX_TITLE_LENGTH,
             )}${t.track.name.length > MAX_TITLE_LENGTH ? '...' : ''}`}</span>
             {` · `}
-            {t.track.artists.map((artist, index) => (
-              <span key={artist.id} className="artist">{`${artist.name}${
-                index < t.track.artists.length - 1 ? ', ' : ''
-              }`}</span>
-            ))}
+            <span className="artist-list">
+              {t.track.artists.map((artist, index) => (
+                <>
+                  <Tooltip
+                    placement="top"
+                    trigger={['click']}
+                    overlay={
+                      <ArtistTooltip
+                        name={artist.name}
+                        url={artist.href}
+                        accessToken={accessToken}
+                        setUnauthorized={setUnauthorized}
+                      />
+                    }
+                  >
+                    <span key={artist.id} className="artist">
+                      {artist.name}
+                    </span>
+                  </Tooltip>
+                  {index < t.track.artists.length - 1 ? ', ' : ''}
+                </>
+              ))}
+            </span>
           </div>
         ))}
       </div>

@@ -1,0 +1,71 @@
+.rc-tooltip {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  visibility: visible;
+  font-size: 12px;
+  padding: 1px;
+}
+
+.rc-tooltip-hidden {
+  display: none;
+}
+
+.rc-tooltip-placement-top .rc-tooltip-arrow {
+  left: 50%;
+}
+
+.rc-tooltip-placement-top .rc-tooltip-arrow,
+.rc-tooltip-placement-topLeft .rc-tooltip-arrow,
+.rc-tooltip-placement-topRight .rc-tooltip-arrow {
+  bottom: -5px;
+  margin-left: -6px;
+  border-width: 6px 6px 0;
+  border-top-color: #343434e6;
+  padding-top: 1px;
+}
+
+.rc-tooltip-arrow,
+.rc-tooltip-arrow-inner {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.rc-tooltip-inner {
+  padding: 10px;
+  text-align: left;
+  text-decoration: none;
+  background-color: #343434e6;
+  border-radius: 4px;
+  min-height: 34px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.artist-container {
+  display: flex;
+}
+
+.artist-picture {
+  width: 64px;
+  height: 64px;
+  margin-right: 10px;
+}
+
+.artist-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.artist-followers {
+  margin-bottom: 4px;
+}
+
+.artist-link.spotify-link::after {
+  width: 10px;
+  height: 10px;
+  background-size: 10px;
+}

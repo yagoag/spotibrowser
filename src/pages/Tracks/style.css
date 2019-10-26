@@ -68,8 +68,13 @@
   background-color: #3f3f3f;
 }
 
-.track .artist {
+.track .artist-list {
   color: #b3b3b3;
+}
+
+.track .artist:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .track-container.loading {

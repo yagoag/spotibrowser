@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+body {
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  color: #f9f9f9;
+  background-color: #373737;
+}
+
 .App {
   text-align: left;
-  color: #f9f9f9;
   min-height: calc(100% - 20px);
   min-width: 100%;
   position: absolute;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
   background: linear-gradient(180deg, #373737, #181818);
   padding-bottom: 20px;
 }
@@ -49,4 +53,28 @@
 #contents {
   display: flex;
   flex-direction: row;
+}
+
+body .react-loading-skeleton {
+  border-radius: 0;
+}
+
+.spotify-link {
+  color: #1db954;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.spotify-link:hover {
+  text-decoration: underline;
+}
+
+.spotify-link::after {
+  display: inline-flex;
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: url('../../assets/external-link.png');
+  background-size: 12px;
+  margin-left: 4px;
 }
