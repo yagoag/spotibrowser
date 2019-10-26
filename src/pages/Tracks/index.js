@@ -80,12 +80,27 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
         />
         <div className="playlist-details">
           <div className="list-type">Playlist</div>
+          <div className="playlist-link">
+            <a
+              className="spotify-link"
+              href={playlist.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open on Spotify
+            </a>
+          </div>
           <div className="playlist-name">{playlist.name}</div>
           <div className="track-count">
             Created by{' '}
-            <span className="playlist-owner">
+            <a
+              className="playlist-owner spotify-link white"
+              href={playlist.owner.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {playlist.owner.display_name}
-            </span>{' '}
+            </a>{' '}
             · {playlist.tracks.total} songs
           </div>
         </div>
@@ -97,10 +112,17 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
       <div className="track-list">
         {tracks.filter(filterAndPrint).map(t => (
           <div className="track" key={t.track.id}>
-            <span title={t.track.name}>{`${t.track.name.substring(
-              0,
-              MAX_TITLE_LENGTH,
-            )}${t.track.name.length > MAX_TITLE_LENGTH ? '...' : ''}`}</span>
+            <a
+              className="spotify-link white"
+              title={t.track.name}
+              href={t.track.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {`${t.track.name.substring(0, MAX_TITLE_LENGTH)}${
+                t.track.name.length > MAX_TITLE_LENGTH ? '...' : ''
+              }`}
+            </a>
             {` · `}
             <span className="artist-list">
               {t.track.artists.map((artist, index) => (
