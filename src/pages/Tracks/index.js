@@ -60,6 +60,10 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
     return () => clearInterval(interval);
   }, [playlist, setUnauthorized, accessToken, limit, offset]);
 
+  useEffect(() => {
+    setOffset(0);
+  }, [playlist]);
+
   if (!playlist) {
     return <></>;
   }

@@ -51,6 +51,10 @@ const Playlists = ({ setUnauthorized, accessToken }) => {
     return () => clearInterval(interval);
   }, [filters, limit, offset, setUnauthorized, accessToken]);
 
+  useEffect(() => {
+    setOffset(0);
+  }, [filters]);
+
   return (
     <div
       className={`playlist-container${activePlaylist ? ' active-playlist' : ''}
