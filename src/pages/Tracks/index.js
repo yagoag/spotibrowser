@@ -79,8 +79,8 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
           alt={playlist.name}
         />
         <div className="playlist-details">
-          <div className="list-type">Playlist</div>
-          <div className="playlist-link">
+          <div className="list-type">
+            Playlist ·{' '}
             <a
               className="spotify-link"
               href={playlist.external_urls.spotify}
