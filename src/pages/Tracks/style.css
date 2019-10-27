@@ -48,11 +48,11 @@
 }
 
 .playlist-info .playlist-details .track-count {
-  color: #b3b3b3;
+  color: var(--light-gray);
 }
 
 .playlist-info .playlist-details .playlist-owner {
-  color: #f2f2f2;
+  color: var(--white);
   font-weight: bold;
 }
 
@@ -61,16 +61,16 @@
 }
 
 .track {
-  border-bottom: 1px solid #3f3f3f;
+  border-bottom: 1px solid var(--medium-gray);
   padding: 8px 16px;
 }
 
 .track:hover {
-  background-color: #3f3f3f;
+  background-color: var(--medium-gray);
 }
 
 .track .artist-list {
-  color: #b3b3b3;
+  color: var(--light-gray);
 }
 
 .track .artist:hover {

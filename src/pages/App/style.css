@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+:root {
+  --white: #f9f9f9;
+  --light-gray: #b3b3b3;
+  --medium-gray: #3f3f3f;
+  --medium-dark-gray: #373737;
+  --translucent-medium-dark-gray: #343434e6;
+  --dark-gray: #181818;
+  --spotify-green: #1db954;
+  --red: #e34242;
+}
+
 body {
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
-  color: #f9f9f9;
-  background-color: #373737;
+  color: var(--white);
+  background-color: var(--medium-dark-gray);
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,7 +28,11 @@ body {
   position: absolute;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #373737, #181818);
+  background: linear-gradient(
+    180deg,
+    var(--medium-dark-gray),
+    var(--dark-gray)
+  );
   padding-bottom: 20px;
 }
 
@@ -27,7 +42,7 @@ body {
 }
 
 #header .app-title {
-  color: #1db954;
+  color: var(--spotify-green);
   font-size: 32px;
   font-weight: bold;
 }
@@ -38,9 +53,9 @@ body {
   margin-left: 30px;
   padding: 0 15px;
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   border-radius: 50vh;
-  color: #fff;
+  color: var(--white);
   font-size: 11px;
   font-family: 'Montserrat', sans-serif;
   outline: none;
@@ -63,7 +78,7 @@ body .react-loading-skeleton {
 }
 
 .spotify-link {
-  color: #1db954;
+  color: var(--spotify-green);
   cursor: pointer;
   text-decoration: none;
 }
@@ -83,7 +98,7 @@ body .react-loading-skeleton {
 }
 
 .spotify-link.white {
-  color: #f2f2f2;
+  color: var(--white);
 }
 
 .spotify-link.white::after {

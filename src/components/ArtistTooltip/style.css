@@ -21,7 +21,7 @@
   bottom: -5px;
   margin-left: -6px;
   border-width: 6px 6px 0;
-  border-top-color: #343434e6;
+  border-top-color: var(--translucent-medium-dark-gray);
   padding-top: 1px;
 }
 
@@ -38,7 +38,7 @@
   padding: 10px;
   text-align: left;
   text-decoration: none;
-  background-color: #343434e6;
+  background-color: var(--translucent-medium-dark-gray);
   border-radius: 4px;
   min-height: 34px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);

@@ -15,7 +15,7 @@ select {
 .filter-input {
   border: none;
   border-radius: 50vh;
-  background-color: #ffffff;
+  background-color: var(--white);
   padding: 1px 10px;
   width: 200px;
   margin-right: 10px;
@@ -30,15 +30,15 @@ select {
   background-color: transparent;
   height: 22px;
   width: 200px;
-  color: #373737;
+  color: var(--medium-dark-gray);
   outline: none;
 }
 
 .filter-input.error {
-  border: 1px solid #e34242;
-  box-shadow: 0 0 5px #e34242;
+  border: 1px solid var(--red);
+  box-shadow: 0 0 5px var(--red);
 }
 
 .filter .error-message {
-  color: #e34242;
+  color: var(--red);
 }
