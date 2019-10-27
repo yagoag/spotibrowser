@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Skeleton from 'react-loading-skeleton';
 import { setActivePlaylist } from '../../store/actions';
 import './style.css';
 
@@ -10,22 +11,44 @@ const Playlist = ({ playlist }) => {
   return (
     <div
       className={`playlist${activePlaylist ? ' playlist-small' : ''}${
-        activePlaylist && playlist.id === activePlaylist.id ? ' active' : ''
+        activePlaylist && playlist && playlist.id === activePlaylist.id
+          ? ' active'
+          : ''
       }`}
       onClick={() => dispatch(setActivePlaylist(playlist))}
     >
-      <img
-        src={playlist.images[0].url}
-        width={'64px'}
-        height={'64px'}
-        alt={playlist.name}
-      />
+      {playlist ? (
+        <img
+          src={playlist.images[0].url}
+          width="64px"
+          height="64px"
+          alt={playlist.name}
+        />
+      ) : (
+        <Skeleton width="64px" height="64px" />
+      )}
       <div className="info">
-        <div className="name">{playlist.name}</div>
-        <div>
-          By <span className="owner">{playlist.owner.display_name}</span>
+        <div className="name">
+          {playlist ? (
+            playlist.name
+          ) : (
+            <Skeleton width={Math.floor(Math.random() * 60 + 61) + 'px'} />
+          )}
         </div>
-        <div>{playlist.tracks.total} songs</div>
+        {playlist ? (
+          <div>
+            By <span className="owner">{playlist.owner.display_name}</span>
+          </div>
+        ) : (
+          <Skeleton width="60px" />
+        )}
+        <div>
+          {playlist ? (
+            `${playlist.tracks.total} songs`
+          ) : (
+            <Skeleton width="55px" />
+          )}
+        </div>
       </div>
     </div>
   );

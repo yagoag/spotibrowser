@@ -5,6 +5,9 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #f9f9f9;
   background-color: #373737;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .App {

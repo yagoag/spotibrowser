@@ -55,16 +55,19 @@ const Playlists = ({ setUnauthorized, accessToken }) => {
     setOffset(0);
   }, [filters]);
 
+  const mockPlaylists = [];
+  if (isLoading) {
+    for (let i = 0; i < limit; i++) {
+      mockPlaylists.push(i);
+    }
+  }
+
   return (
     <div
-      className={`playlist-container${activePlaylist ? ' active-playlist' : ''}
-      ${isLoading ? ' loading' : ''}`}
+      className={`playlist-container${
+        activePlaylist ? ' active-playlist' : ''
+      }`}
     >
-      {isLoading && (
-        <div className="loader-container">
-          <div className="loader"></div>
-        </div>
-      )}
       <div className="title">{playlistMessage}</div>
       <Pagination
         offset={offset}
@@ -74,13 +77,15 @@ const Playlists = ({ setUnauthorized, accessToken }) => {
         setLimit={setLimit}
         small={!!activePlaylist}
       />
-      {playlists.map(playlist => (
-        <Playlist
-          key={playlist.id}
-          playlist={playlist}
-          active={activePlaylist}
-        />
-      ))}
+      {!isLoading
+        ? playlists.map(playlist => (
+            <Playlist
+              key={playlist.id}
+              playlist={playlist}
+              active={activePlaylist}
+            />
+          ))
+        : mockPlaylists.map(n => <Playlist key={n} />)}
       <Pagination
         offset={offset}
         limit={limit}

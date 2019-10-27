@@ -2,19 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IoMdClose } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
-import Tooltip from 'rc-tooltip';
 import Pagination from '../../components/Pagination';
 import { setActivePlaylist } from '../../store/actions';
+import Track from '../../components/Track';
 import './style.css';
-import ArtistTooltip from '../../components/ArtistTooltip';
-
-const MAX_TITLE_LENGTH = 35;
-
-const filterAndPrint = track => {
-  const shouldAdd = track.track && track.track.id;
-  if (!shouldAdd) console.log('Not adding', track);
-  return shouldAdd;
-};
 
 const Tracks = ({ setUnauthorized, accessToken }) => {
   const [tracks, setTracks] = useState([]);
@@ -64,17 +55,19 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
     setOffset(0);
   }, [playlist]);
 
+  const mockTracks = [];
+  if (isLoading) {
+    for (let i = 0; i < limit; i++) {
+      mockTracks.push(i);
+    }
+  }
+
   if (!playlist) {
     return <></>;
   }
 
   return (
-    <div className={`track-container${isLoading ? ' loading' : ''}`}>
-      {isLoading && (
-        <div className="loader-container">
-          <div className="loader"></div>
-        </div>
-      )}
+    <div className={`track-container`}>
       <div className="playlist-info">
         <img
           src={playlist.images[0].url}
@@ -114,45 +107,17 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
         />
       </div>
       <div className="track-list">
-        {tracks.filter(filterAndPrint).map(t => (
-          <div className="track" key={t.track.id}>
-            <a
-              className="spotify-link white"
-              title={t.track.name}
-              href={t.track.external_urls.spotify}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {`${t.track.name.substring(0, MAX_TITLE_LENGTH)}${
-                t.track.name.length > MAX_TITLE_LENGTH ? '...' : ''
-              }`}
-            </a>
-            {` · `}
-            <span className="artist-list">
-              {t.track.artists.map((artist, index) => (
-                <>
-                  <Tooltip
-                    placement="top"
-                    trigger={['click']}
-                    overlay={
-                      <ArtistTooltip
-                        name={artist.name}
-                        url={artist.href}
-                        accessToken={accessToken}
-                        setUnauthorized={setUnauthorized}
-                      />
-                    }
-                  >
-                    <span key={artist.id} className="artist">
-                      {artist.name}
-                    </span>
-                  </Tooltip>
-                  {index < t.track.artists.length - 1 ? ', ' : ''}
-                </>
-              ))}
-            </span>
-          </div>
-        ))}
+        {!isLoading
+          ? tracks
+              .filter(t => t.track && t.track.id)
+              .map(t => (
+                <Track
+                  track={t.track}
+                  accessToken={accessToken}
+                  setUnauthorized={setUnauthorized}
+                />
+              ))
+          : mockTracks.map(n => <Track key={n} />)}
       </div>
       <Pagination
         offset={offset}
