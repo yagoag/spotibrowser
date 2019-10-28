@@ -18,7 +18,6 @@ const sendToAuth = () => {
 };
 
 const App = () => {
-  console.log(process.env);
   const [showFilters, setShowFilters] = useState(false);
   const [unauthorized, setUnauthorized] = useState(false);
   const [accessToken, setAccessToken] = useState(null);

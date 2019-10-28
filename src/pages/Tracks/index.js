@@ -112,6 +112,7 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
               .filter(t => t.track && t.track.id)
               .map(t => (
                 <Track
+                  key={t.track.id}
                   track={t.track}
                   accessToken={accessToken}
                   setUnauthorized={setUnauthorized}
