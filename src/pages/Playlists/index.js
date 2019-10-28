@@ -16,6 +16,7 @@ const Playlists = ({ setUnauthorized, accessToken }) => {
   const [totalPlaylists, setTotalPlaylists] = useState(0);
   const activePlaylist = useSelector(state => state.activePlaylist);
   const filters = useSelector(state => state.filters);
+  const autoRefresh = useSelector(state => state.autoRefresh);
 
   useEffect(() => {
     const fetchPlaylistData = async () => {
@@ -44,12 +45,15 @@ const Playlists = ({ setUnauthorized, accessToken }) => {
     };
 
     fetchPlaylistData();
-    const interval = setInterval(() => {
-      fetchPlaylistData();
-    }, 30000);
 
-    return () => clearInterval(interval);
-  }, [filters, limit, offset, setUnauthorized, accessToken]);
+    if (autoRefresh) {
+      const interval = setInterval(() => {
+        fetchPlaylistData();
+      }, 30000);
+
+      return () => clearInterval(interval);
+    }
+  }, [filters, limit, offset, setUnauthorized, accessToken, autoRefresh]);
 
   useEffect(() => {
     setOffset(0);

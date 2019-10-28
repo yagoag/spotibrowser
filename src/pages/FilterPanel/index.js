@@ -1,17 +1,23 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FilterElement from '../../components/FilterElement';
-import { setFilters } from '../../store/actions';
+import { setFilters, setAutoRefresh } from '../../store/actions';
 import filterDefs from './filters.json';
 import './style.css';
 
-const FilterPanel = ({ visible, onChange }) => {
+const FilterPanel = ({ visible }) => {
   const filters = useSelector(state => state.filters);
+  const autoRefresh = useSelector(state => state.autoRefresh);
   const dispatch = useDispatch();
+
   const changeSingleFilter = event => {
     const newState = { ...filters };
     newState[event.target.id] = event.target.value;
     dispatch(setFilters(newState));
+  };
+
+  const changeAutoRefresh = event => {
+    dispatch(setAutoRefresh(event.target.checked));
   };
 
   return (
@@ -26,6 +32,14 @@ const FilterPanel = ({ visible, onChange }) => {
             onChange={changeSingleFilter}
           ></FilterElement>
         ))}
+      <div className="auto-refresh">
+        <input
+          type="checkbox"
+          checked={autoRefresh}
+          onChange={changeAutoRefresh}
+        />{' '}
+        Enable auto-refresh
+      </div>
     </div>
   );
 };

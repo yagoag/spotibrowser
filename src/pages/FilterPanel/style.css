@@ -4,7 +4,7 @@
   }
 
   .filter-panel.visible {
-    height: 128px;
+    height: 145px;
   }
 }
 
@@ -15,6 +15,10 @@
 
   .filter-panel.visible {
     height: 64px;
+  }
+
+  .auto-refresh {
+    padding-top: 24px;
   }
 }
 
@@ -28,4 +32,12 @@
 .filter-panel.visible {
   transition: height 0.3s;
   visibility: visible;
+}
+
+.auto-refresh {
+  margin-left: 10px;
+}
+
+.auto-refresh input[type='checkbox'] {
+  margin: 0;
 }

@@ -14,6 +14,7 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const playlist = useSelector(state => state.activePlaylist);
+  const autoRefresh = useSelector(state => state.autoRefresh);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,12 +45,15 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
     };
 
     fetchPlaylistData();
-    const interval = setInterval(() => {
-      fetchPlaylistData();
-    }, 30000);
 
-    return () => clearInterval(interval);
-  }, [playlist, setUnauthorized, accessToken, limit, offset]);
+    if (autoRefresh) {
+      const interval = setInterval(() => {
+        fetchPlaylistData();
+      }, 30000);
+
+      return () => clearInterval(interval);
+    }
+  }, [playlist, setUnauthorized, accessToken, limit, offset, autoRefresh]);
 
   useEffect(() => {
     setOffset(0);

@@ -1,8 +1,12 @@
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
+import { useDispatch } from 'react-redux';
+import { setAutoRefresh } from '../../store/actions';
 import './style.css';
 
 const SelectFilter = ({ id, name, validation, value, onChange, setError }) => {
+  const dispatch = useDispatch();
+
   const handleChange = event => {
     try {
       validateInput(event.target.value, validation);
@@ -15,6 +19,7 @@ const SelectFilter = ({ id, name, validation, value, onChange, setError }) => {
   };
 
   const handleDateTimeChange = dateTime => {
+    dispatch(setAutoRefresh(!dateTime));
     onChange({ target: { id: id, value: dateTime } });
   };
 

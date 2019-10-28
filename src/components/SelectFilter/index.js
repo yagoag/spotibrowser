@@ -45,15 +45,12 @@ const styles = {
     padding: 0,
     paddingLeft: '4px',
   }),
-  option: (provided, state) => {
-    console.log({ state });
-    return {
-      ...provided,
-      backgroundColor:
-        (state.isSelected && '#1db954') || (state.isFocused && '#1db95433'),
-      cursor: 'pointer',
-    };
-  },
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor:
+      (state.isSelected && '#1db954') || (state.isFocused && '#1db95433'),
+    cursor: 'pointer',
+  }),
 };
 
 export default SelectFilter;
