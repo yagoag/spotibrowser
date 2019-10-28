@@ -1,5 +1,6 @@
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
+import './style.css';
 
 const SelectFilter = ({ id, name, validation, value, onChange, setError }) => {
   const handleChange = event => {

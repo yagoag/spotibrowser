@@ -1,0 +1,11 @@
+.filter .react-datetime-picker__button {
+  padding: 0 2px;
+}
+
+.filter .react-datetime-picker__inputGroup__divider {
+  white-space: nowrap;
+}
+
+.filter .react-datetime-picker__inputGroup__amPm {
+  appearance: none;
+}
