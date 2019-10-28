@@ -1,4 +1,4 @@
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .filter-panel.active {
     display: inline-table;
   }
@@ -8,7 +8,7 @@
   }
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 769px) {
   .filter-panel {
     display: inline-flex;
   }

@@ -17,7 +17,7 @@ select {
   border-radius: 50vh;
   background-color: var(--white);
   padding: 1px 10px;
-  width: 200px;
+  width: 210px;
   margin-right: 10px;
   border: 1px solid transparent;
 }
@@ -29,7 +29,7 @@ select {
   border: none;
   background-color: transparent;
   height: 22px;
-  width: 200px;
+  width: 210px;
   color: var(--medium-dark-gray);
   outline: none;
 }
@@ -41,4 +41,16 @@ select {
 
 .filter .error-message {
   color: var(--red);
+}
+
+.filter .react-datetime-picker__button {
+  padding: 0 2px;
+}
+
+.filter .react-datetime-picker__inputGroup__divider {
+  white-space: nowrap;
+}
+
+.filter .react-datetime-picker__inputGroup__amPm {
+  appearance: none;
 }
