@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
+import { SkeletonTheme } from 'react-loading-skeleton';
 import './style.css';
 import Playlists from '../Playlists';
 import FilterPanel from '../FilterPanel';
@@ -51,28 +52,33 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div className="App">
-        <div id="header">
-          <div className="app-title">SpotiBrowser</div>
-          <button
-            className="show-filters"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            Filters
-            <span className="arrow">
-              {showFilters ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
-            </span>
-          </button>
+      <SkeletonTheme color="#f2f2f2" highlightColor="#777">
+        <div className="App">
+          <div id="header">
+            <div className="app-title">SpotiBrowser</div>
+            <button
+              className="show-filters"
+              onClick={() => setShowFilters(!showFilters)}
+            >
+              Filters
+              <span className="arrow">
+                {showFilters ? <TiArrowSortedUp /> : <TiArrowSortedDown />}
+              </span>
+            </button>
+          </div>
+          <FilterPanel visible={showFilters} />
+          <div id="contents">
+            <Playlists
+              setUnauthorized={setUnauthorized}
+              accessToken={accessToken}
+            />
+            <Tracks
+              setUnauthorized={setUnauthorized}
+              accessToken={accessToken}
+            />
+          </div>
         </div>
-        <FilterPanel visible={showFilters} />
-        <div id="contents">
-          <Playlists
-            setUnauthorized={setUnauthorized}
-            accessToken={accessToken}
-          />
-          <Tracks setUnauthorized={setUnauthorized} accessToken={accessToken} />
-        </div>
-      </div>
+      </SkeletonTheme>
     </Provider>
   );
 };
