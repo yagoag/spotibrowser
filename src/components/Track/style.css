@@ -1,0 +1,36 @@
+@media screen and (max-width: 480px) {
+  .track {
+    padding: 8px 0;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .track {
+    padding: 8px 16px;
+  }
+}
+
+.track {
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.track:hover {
+  background-color: var(--medium-gray);
+}
+
+.track .artist-list {
+  color: var(--light-gray);
+}
+
+.track .artist:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.track-container.loading {
+  opacity: 0.5;
+}
+
+/* 
+          width={'152px'}
+          height={'152px'} */

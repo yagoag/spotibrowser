@@ -2,6 +2,22 @@
   .playlist-container.active-playlist {
     display: none;
   }
+
+  .playlist-container .title {
+    font-size: 22px;
+    margin: 8px 24px;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .playlist-container.active-playlist .title {
+    display: none;
+  }
+
+  .playlist-container .title {
+    font-size: 28px;
+    margin: 20px 50px;
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -27,9 +43,7 @@
 }
 
 .playlist-container .title {
-  font-size: 28px;
   font-weight: bold;
-  margin: 20px 50px;
 }
 
 .playlist-container.loading {

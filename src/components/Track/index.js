@@ -2,6 +2,7 @@ import React from 'react';
 import Tooltip from 'rc-tooltip';
 import Skeleton from 'react-loading-skeleton';
 import ArtistTooltip from '../../components/ArtistTooltip';
+import './style.css';
 
 const MAX_TITLE_LENGTH = 35;
 

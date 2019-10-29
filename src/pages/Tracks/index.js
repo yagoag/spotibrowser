@@ -74,14 +74,12 @@ const Tracks = ({ setUnauthorized, accessToken }) => {
     <div className={`track-container`}>
       <div className="playlist-info">
         <img
+          className="playlist-image"
           src={playlist.images[0].url}
-          width={'152px'}
-          height={'152px'}
           alt={playlist.name}
         />
         <div className="playlist-details">
-          <div className="list-type">
-            Playlist ·{' '}
+          <div className="list-link">
             <a
               className="spotify-link"
               href={playlist.external_urls.spotify}

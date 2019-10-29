@@ -36,21 +36,47 @@ body {
   padding-bottom: 20px;
 }
 
+@media screen and (max-width: 480px) {
+  #header {
+    padding: 16px 24px;
+  }
+
+  #header .app-title {
+    font-size: 24px;
+    flex: 1;
+  }
+
+  #header .show-filters {
+    margin-top: 4px;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  #header {
+    padding: 16px 48px;
+  }
+
+  #header .app-title {
+    font-size: 32px;
+  }
+
+  #header .show-filters {
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+}
+
 #header {
-  padding: 15px 25px;
   display: flex;
 }
 
 #header .app-title {
   color: var(--spotify-green);
-  font-size: 32px;
   font-weight: bold;
 }
 
 #header .show-filters {
   height: 25px;
-  margin-top: 10px;
-  margin-left: 30px;
   padding: 0 15px;
   background-color: transparent;
   border: 1px solid var(--white);
