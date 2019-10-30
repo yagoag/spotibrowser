@@ -18,7 +18,7 @@ const Track = ({ track, accessToken, setUnauthorized }) => {
   return (
     <div className="track">
       <a
-        className="spotify-link white"
+        className="track-title spotify-link white"
         title={track.name}
         href={track.external_urls.spotify}
         target="_blank"
@@ -31,7 +31,7 @@ const Track = ({ track, accessToken, setUnauthorized }) => {
       {` · `}
       <span className="artist-list">
         {track.artists.map((artist, index) => (
-          <>
+          <span key={artist.id}>
             <Tooltip
               placement="top"
               trigger={['click']}
@@ -44,12 +44,10 @@ const Track = ({ track, accessToken, setUnauthorized }) => {
                 />
               }
             >
-              <span key={artist.id} className="artist">
-                {artist.name}
-              </span>
+              <span className="artist">{artist.name}</span>
             </Tooltip>
             {index < track.artists.length - 1 ? ', ' : ''}
-          </>
+          </span>
         ))}
       </span>
     </div>
