@@ -2,6 +2,7 @@
   {
     "id": "country",
     "name": "Country",
+    "default": { "label": "United States", "value": "US" },
     "values": [
       {
         "label": "Algeria",

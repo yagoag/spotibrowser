@@ -9,6 +9,7 @@ const FilterElement = ({ definition, value, onChange }) => {
   const props = {
     id: definition.id,
     name: definition.name,
+    defaultValue: definition.default,
     value: value,
     onChange: onChange,
   };

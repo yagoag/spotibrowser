@@ -22,16 +22,14 @@ const FilterPanel = ({ visible }) => {
 
   return (
     <div className={'filter-panel' + (visible ? ' visible' : '')}>
-      {filterDefs
-        .filter(def => def.id !== 'offset' && def.id !== 'limit')
-        .map(def => (
-          <FilterElement
-            key={def.id}
-            definition={def}
-            value={filters[def.id]}
-            onChange={changeSingleFilter}
-          ></FilterElement>
-        ))}
+      {filterDefs.map(def => (
+        <FilterElement
+          key={def.id}
+          definition={def}
+          value={filters[def.id]}
+          onChange={changeSingleFilter}
+        />
+      ))}
       <div className="auto-refresh">
         <input
           type="checkbox"

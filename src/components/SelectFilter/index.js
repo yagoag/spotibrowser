@@ -1,12 +1,12 @@
 import React from 'react';
 import Select from 'react-select';
 
-const SelectFilter = ({ id, values, onChange }) => {
+const SelectFilter = ({ id, values, onChange, defaultValue }) => {
   return (
     <Select
       name={id}
       options={values}
-      defaultValue={{ label: 'United States', value: 'US' }}
+      defaultValue={defaultValue}
       isSearchable={true}
       onChange={item => onChange({ target: { id: id, value: item.value } })}
       styles={styles}
