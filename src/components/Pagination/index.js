@@ -18,7 +18,7 @@ const Pagination = ({ offset, limit, total, setOffset, setLimit, small }) => {
     <div className={`pagination${small ? ' small' : ''}`}>
       <FaAngleLeft
         onClick={() => offset >= limit - 1 && setOffset(offset - limit)}
-        className={'arrow' + (offset < limit - 1 ? ' inactive' : '')}
+        className={'arrow' + (offset < limit - 1 ? ' disabled' : '')}
       />
       <span className="page-info">
         Page
@@ -34,12 +34,16 @@ const Pagination = ({ offset, limit, total, setOffset, setLimit, small }) => {
       </span>
       <FaAngleRight
         onClick={() => offset < total - limit && setOffset(offset + limit)}
-        className={`arrow ${offset >= total - limit ? ' inactive' : ''}`}
+        className={`arrow ${offset >= total - limit ? ' disabled' : ''}`}
       />
       <span className="page-limit">
         {' | '}
         <div className="input">
-          <select value={limit} onChange={e => setLimit(e.target.value)}>
+          <select
+            className="items-per-page"
+            value={limit}
+            onChange={e => setLimit(e.target.value)}
+          >
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
