@@ -9,7 +9,6 @@ const FilterElement = ({ definition, value, onChange }) => {
   const props = {
     id: definition.id,
     name: definition.name,
-    defaultValue: definition.default,
     value: value,
     onChange: onChange,
   };
@@ -22,7 +21,11 @@ const FilterElement = ({ definition, value, onChange }) => {
       </div>
       <div className={`filter-input${error ? ' error' : ''}`}>
         {'values' in definition ? (
-          <SelectFilter values={definition.values} {...props} />
+          <SelectFilter
+            values={definition.values}
+            defaultValue={definition.default}
+            {...props}
+          />
         ) : (
           <InputFilter
             validation={definition.validation}
