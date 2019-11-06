@@ -57,3 +57,4 @@ const validateInput = (value, validation) => {
 };
 
 export default SelectFilter;
+export { validateInput };
