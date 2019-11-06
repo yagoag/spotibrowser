@@ -44,7 +44,9 @@ const Playlist = ({ playlist }) => {
         )}
         <div>
           {playlist ? (
-            `${playlist.tracks.total} songs`
+            `${playlist.tracks.total} song${
+              playlist.tracks.total > 1 ? 's' : ''
+            }`
           ) : (
             <Skeleton width="55px" />
           )}
