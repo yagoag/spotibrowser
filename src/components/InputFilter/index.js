@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setAutoRefresh } from '../../store/actions';
 import './style.css';
 
-const SelectFilter = ({ id, name, validation, value, onChange, setError }) => {
+const InputFilter = ({ id, name, validation, value, onChange, setError }) => {
   const dispatch = useDispatch();
 
   const handleChange = event => {
@@ -56,5 +56,5 @@ const validateInput = (value, validation) => {
   }
 };
 
-export default SelectFilter;
+export default InputFilter;
 export { validateInput };
