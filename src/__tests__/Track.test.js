@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Track from '../components/Track';
+import Skeleton from 'react-loading-skeleton';
 
 describe('Track', () => {
   it('renders without crashing', () => {
@@ -9,8 +10,8 @@ describe('Track', () => {
   });
 
   it('renders skeleton on empty props', () => {
-    const wrapper = mount(<Track />);
-    expect(wrapper.find('.react-loading-skeleton').length).toEqual(1);
+    const wrapper = shallow(<Track />);
+    expect(wrapper.find(Skeleton).length).toEqual(1);
   });
 
   it('renders track appropriately', () => {

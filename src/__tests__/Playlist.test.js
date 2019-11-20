@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import Playlist from '../components/Playlist';
+import Skeleton from 'react-loading-skeleton';
 
 jest.mock('react-redux');
 
@@ -20,8 +21,8 @@ describe('Playlist', () => {
   });
 
   it('renders skeleton on empty props', () => {
-    const wrapper = mount(<Playlist />);
-    expect(wrapper.find('.react-loading-skeleton').length).toEqual(4);
+    const wrapper = shallow(<Playlist />);
+    expect(wrapper.find(Skeleton).length).toEqual(4);
   });
 
   it('renders title', () => {
