@@ -1,17 +1,25 @@
 {
   "files": {
-    "main.css": "/spotibrowser/static/css/main.7f8ce078.chunk.css",
-    "main.js": "/spotibrowser/static/js/main.935e21a0.chunk.js",
-    "main.js.map": "/spotibrowser/static/js/main.935e21a0.chunk.js.map",
-    "runtime~main.js": "/spotibrowser/static/js/runtime~main.ab9fad04.js",
-    "runtime~main.js.map": "/spotibrowser/static/js/runtime~main.ab9fad04.js.map",
-    "static/css/2.ef8e8b31.chunk.css": "/spotibrowser/static/css/2.ef8e8b31.chunk.css",
-    "static/js/2.fe41a399.chunk.js": "/spotibrowser/static/js/2.fe41a399.chunk.js",
-    "static/js/2.fe41a399.chunk.js.map": "/spotibrowser/static/js/2.fe41a399.chunk.js.map",
+    "main.css": "/spotibrowser/static/css/main.64a53e6e.chunk.css",
+    "main.js": "/spotibrowser/static/js/main.752e451a.chunk.js",
+    "main.js.map": "/spotibrowser/static/js/main.752e451a.chunk.js.map",
+    "runtime-main.js": "/spotibrowser/static/js/runtime-main.118bcaa1.js",
+    "runtime-main.js.map": "/spotibrowser/static/js/runtime-main.118bcaa1.js.map",
+    "static/css/2.c595a105.chunk.css": "/spotibrowser/static/css/2.c595a105.chunk.css",
+    "static/js/2.8db0723a.chunk.js": "/spotibrowser/static/js/2.8db0723a.chunk.js",
+    "static/js/2.8db0723a.chunk.js.map": "/spotibrowser/static/js/2.8db0723a.chunk.js.map",
     "index.html": "/spotibrowser/index.html",
-    "precache-manifest.6445aede3d20d70794d6aa1db703e525.js": "/spotibrowser/precache-manifest.6445aede3d20d70794d6aa1db703e525.js",
+    "precache-manifest.2ee84e421dad33afd1ff435f7ac22bb1.js": "/spotibrowser/precache-manifest.2ee84e421dad33afd1ff435f7ac22bb1.js",
     "service-worker.js": "/spotibrowser/service-worker.js",
-    "static/css/2.ef8e8b31.chunk.css.map": "/spotibrowser/static/css/2.ef8e8b31.chunk.css.map",
-    "static/css/main.7f8ce078.chunk.css.map": "/spotibrowser/static/css/main.7f8ce078.chunk.css.map"
-  }
+    "static/css/2.c595a105.chunk.css.map": "/spotibrowser/static/css/2.c595a105.chunk.css.map",
+    "static/css/main.64a53e6e.chunk.css.map": "/spotibrowser/static/css/main.64a53e6e.chunk.css.map",
+    "static/js/2.8db0723a.chunk.js.LICENSE": "/spotibrowser/static/js/2.8db0723a.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.118bcaa1.js",
+    "static/css/2.c595a105.chunk.css",
+    "static/js/2.8db0723a.chunk.js",
+    "static/css/main.64a53e6e.chunk.css",
+    "static/js/main.752e451a.chunk.js"
+  ]
 }
