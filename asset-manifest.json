@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/spotibrowser/static/css/main.64a53e6e.chunk.css",
-    "main.js": "/spotibrowser/static/js/main.752e451a.chunk.js",
-    "main.js.map": "/spotibrowser/static/js/main.752e451a.chunk.js.map",
+    "main.js": "/spotibrowser/static/js/main.bd6fe371.chunk.js",
+    "main.js.map": "/spotibrowser/static/js/main.bd6fe371.chunk.js.map",
     "runtime-main.js": "/spotibrowser/static/js/runtime-main.118bcaa1.js",
     "runtime-main.js.map": "/spotibrowser/static/js/runtime-main.118bcaa1.js.map",
     "static/css/2.c595a105.chunk.css": "/spotibrowser/static/css/2.c595a105.chunk.css",
     "static/js/2.8db0723a.chunk.js": "/spotibrowser/static/js/2.8db0723a.chunk.js",
     "static/js/2.8db0723a.chunk.js.map": "/spotibrowser/static/js/2.8db0723a.chunk.js.map",
     "index.html": "/spotibrowser/index.html",
-    "precache-manifest.2ee84e421dad33afd1ff435f7ac22bb1.js": "/spotibrowser/precache-manifest.2ee84e421dad33afd1ff435f7ac22bb1.js",
+    "precache-manifest.8abb9341879528ebb778c98aaa4a1f7c.js": "/spotibrowser/precache-manifest.8abb9341879528ebb778c98aaa4a1f7c.js",
     "service-worker.js": "/spotibrowser/service-worker.js",
     "static/css/2.c595a105.chunk.css.map": "/spotibrowser/static/css/2.c595a105.chunk.css.map",
     "static/css/main.64a53e6e.chunk.css.map": "/spotibrowser/static/css/main.64a53e6e.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.c595a105.chunk.css",
     "static/js/2.8db0723a.chunk.js",
     "static/css/main.64a53e6e.chunk.css",
-    "static/js/main.752e451a.chunk.js"
+    "static/js/main.bd6fe371.chunk.js"
   ]
 }
