@@ -1,6 +1,13 @@
-# SpotiBrowser
+<p align="center">
+  <img src="screenshot.png" alt="SpotiBrowser running on a smart phone, tablet and laptop" width="600" align="center" />
+</p>
 
-![SpotiBrowser](screenshot.png)
+<h1 align="center">
+  SpotiBrowser
+  
+  [![Netlify Status](https://api.netlify.com/api/v1/badges/70fa95c0-60ff-4894-b154-6724da1e7fe4/deploy-status)](https://app.netlify.com/sites/spotibrowser/deploys)
+  
+</h1>
 
 This app will allow you to browse and filter the featured playlists on Spotify.
 
